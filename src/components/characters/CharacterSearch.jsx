@@ -39,7 +39,12 @@ const CharacterSearch = () => {
       <Heading as='h3' size='md' mb='.75rem'>
         Search for a character on Lodestone
       </Heading>
-      <form className='characterSearch' onSubmit={handleSubmit}>
+      <form
+        title='Character Search Form'
+        className='characterSearch'
+        autoComplete='off'
+        onSubmit={handleSubmit}
+      >
         <FormControl mb='.75rem' maxW='350px'>
           <FormLabel>Character name</FormLabel>
           <InputGroup>
@@ -47,6 +52,8 @@ const CharacterSearch = () => {
               variant='outline'
               placeholder='Enter character name'
               value={charName}
+              errorBorderColor='red.500'
+              isRequired
               onChange={handleNameChange}
             />
             {charName && (

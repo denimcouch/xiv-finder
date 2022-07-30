@@ -3,7 +3,7 @@ import CharacterSearch from '../components/characters/CharacterSearch'
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Container maxW='container.lg' py='2rem'>
         <Flex
           direction='column'
@@ -19,7 +19,7 @@ const Home = () => {
           {/* List search results */}
         </Flex>
       </Container>
-    </div>
+    </>
   )
 }
 
