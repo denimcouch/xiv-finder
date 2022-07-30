@@ -16,7 +16,7 @@ const App = () => {
         justify='space-between'
       >
         <Navbar />
-        <main>
+        <main className='xivMain'>
           <Routes>
             <Route exact path='/' element={<Home />} />
             <Route path='/about' element={<About />} />

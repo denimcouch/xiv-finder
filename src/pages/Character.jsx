@@ -1,6 +1,12 @@
+import { Container } from '@chakra-ui/react'
+
 const Character = () => {
   return (
-    <div>Character</div>
+    <div>
+      <Container maxW='container.lg' py='2rem'>
+        Character
+      </Container>
+    </div>
   )
 }
 
