@@ -2,13 +2,16 @@ import { useState } from 'react'
 import {
   FormControl,
   FormLabel,
+  InputGroup,
+  InputRightElement,
   Input,
   Select,
   Button,
+  IconButton,
   Heading,
   Box,
 } from '@chakra-ui/react'
-import { MdArrowForward } from 'react-icons/md'
+import { MdArrowForward, MdClose } from 'react-icons/md'
 // CharacterSearch is going to connect to the character search XIVAPI endpoint
 // It should accept a name value and a server value to generate the query
 const CharacterSearch = () => {
@@ -20,10 +23,12 @@ const CharacterSearch = () => {
 
   const handleServerChange = (e) => setServerName(e.target.value)
 
+  const handleClear = (e) => setCharName('')
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-    console.log('submitting!', charName)
+    console.log('submitting!', charName, serverName)
     setTimeout(() => {
       setLoading(false)
     }, 3000)
@@ -37,12 +42,27 @@ const CharacterSearch = () => {
       <form className='characterSearch' onSubmit={handleSubmit}>
         <FormControl mb='.75rem' maxW='350px'>
           <FormLabel>Character name</FormLabel>
-          <Input
-            variant='outline'
-            placeholder='Enter character name'
-            value={charName}
-            onChange={handleNameChange}
-          />
+          <InputGroup>
+            <Input
+              variant='outline'
+              placeholder='Enter character name'
+              value={charName}
+              onChange={handleNameChange}
+            />
+            {charName && (
+              <InputRightElement pointerEvents='click'>
+                <IconButton
+                  title='Clear input'
+                  aria-label='Clear input'
+                  colorScheme='red'
+                  icon={<MdClose />}
+                  size='md'
+                  variant='ghost'
+                  onClick={handleClear}
+                />
+              </InputRightElement>
+            )}
+          </InputGroup>
         </FormControl>
         <FormControl mb='.75rem' maxW='350px'>
           <FormLabel>Choose Server</FormLabel>
